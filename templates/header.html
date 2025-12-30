@@ -1,0 +1,79 @@
+{% load static %}
+{% block content %} 
+
+
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="no-js oldie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+
+   <!--- basic page needs
+   ================================================== -->
+   <meta charset="utf-8">
+	<title>Movie Box</title>
+	<meta name="description" content="">  
+	<meta name="author" content="">
+
+   <!-- mobile specific metas
+   ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+ 	<!-- CSS
+   ================================================== -->
+   <link rel="stylesheet" href="{% static 'css/base.css' %}">
+   <link rel="stylesheet" href="{% static 'css/vendor.min.css' %}">
+   <link rel="stylesheet" href="{% static 'css/main.css' %}">     
+
+   <!-- script
+   ================================================== -->
+	<script src="{% static 'js/modernizr.js' %}"></script>
+
+   <!-- favicons
+	================================================== -->
+	<link rel="shortcut icon" href="{% static 'favicon.png' %}" >
+
+</head>
+
+<body>
+
+
+<header id="main-header" style="box-shadow: 0 2px 8px rgba(0,0,0,0.08); background: #222; color: #fff;">
+   <div class="row" style="display: flex; align-items: center; justify-content: space-between; padding: 10px 0;">
+      <div class="logo" style="font-size: 2rem; font-weight: bold; letter-spacing: 2px;">
+         <a href="{% url 'first' %}" style="color: #fff; text-decoration: none;">MovieBox</a>
+      </div>
+      <nav id="nav-wrap" style="flex: 1;">
+         <a class="mobile-btn" href="#nav-wrap" title="Show navigation">Show Menu</a>
+         <a class="mobile-btn" href="#" title="Hide navigation">Hide Menu</a>
+         <ul id="nav" class="nav" style="display: flex; gap: 1.5rem; justify-content: center; align-items: center; margin: 0;">
+            {% if request.session.logint %}
+            <li><a href="{% url 'index' %}" style="color: #fff;">Home</a></li>
+            <li><a href="{% url 'viewuser' %}" style="color: #fff;">ViewUser</a></li>
+            <li><a href="{% url 'logout' %}" style="color: #fff;">Logout</a></li>
+            {% elif request.session.uid %}
+                        <li><a href="{% url 'index' %}" style="color: #fff;">Home</a></li>
+
+            <li><a href="#services" style="color: #fff;">Services</a></li>
+            <li><a href="#portfolio" style="color: #fff;">Portfolio</a></li>
+            <li><a href="{% url 'logout' %}" style="color: #fff;">Logout</a></li>
+            {% else %}
+                        <li><a href="{% url 'index' %}" style="color: #fff;">Home</a></li>
+
+            <li><a href="{% url 'reg' %}" style="color: #fff;">Register</a></li>
+            <li><a href="http://127.0.0.1:8000/login" style="color: #fff;">Login</a></li>
+            {% endif %}
+         </ul>
+      </nav>
+      <div style="display: flex; align-items: center; gap: 1rem;">
+         <form action="#" method="get" style="margin: 0;">
+            <input type="text" name="search" placeholder="Search..." style="padding: 5px 10px; border-radius: 4px; border: none; outline: none;" />
+         </form>
+         <a href="#profile" title="User Profile" style="color: #fff; font-size: 1.5rem;">
+            <i class="fa fa-user-circle"></i>
+         </a>
+      </div>
+   </div>
+</header>
+
+ {% endblock %}

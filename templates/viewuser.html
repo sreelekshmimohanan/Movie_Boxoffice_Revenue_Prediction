@@ -1,0 +1,54 @@
+{% load static %}
+{% block content %}
+ 
+ {% include 'header.html' %}
+   
+   
+   
+   <section id="contact">
+
+   	<div class="row section-head">
+
+   		<div class="twelve columns">
+
+	         <h1>Get In Touch With Us<span>.</span></h1>
+
+	         <hr />	        
+
+	      </div>
+
+      </div> <!-- end section-head -->
+
+      <div class="row">
+      	
+      	<div id="contact-form" class="six columns tab-whole left">
+
+
+            <!-- user cards -->
+            <div style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; align-items: center; margin: 0 auto; max-width: 1200px;">
+                {% for user in data %}
+                <div style="background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); padding: 20px; min-width: 220px; max-width: 260px; flex: 1 1 220px; margin-bottom: 16px;">
+                    <h3 style="margin-top: 0; color: #222;">{{ user.name }}</h3>
+                    <p style="margin: 8px 0 4px 0;"><strong>Email:</strong> {{ user.email }}</p>
+                    <p style="margin: 4px 0;"><strong>Phone:</strong> {{ user.phone }}</p>
+                    <p style="margin: 4px 0;"><strong>Password:</strong> {{ user.password }}</p>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- contact-warning -->
+            <div id="message-warning"></div>
+            <!-- contact-success -->
+      		<div id="message-success">
+               <i class="icon-ok"></i>Your message was sent, thank you!<br />
+      		</div>
+
+         </div>
+
+             	
+
+      </div> <!-- end row -->     
+
+   </section>  <!-- end contact -->
+ {% include 'footer.html' %}
+{% endblock %}

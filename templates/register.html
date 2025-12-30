@@ -1,0 +1,72 @@
+{% load static %}
+{% block content %}
+ 
+ {% include 'header.html' %}
+   
+   
+   
+   <section id="contact">
+
+   	<div class="row section-head">
+
+   		<div class="twelve columns">
+
+	         <h1>Get In Touch With Us<span>.</span></h1>
+
+	         <hr />	        
+
+	      </div>
+
+      </div> <!-- end section-head -->
+
+
+	  <div class="row" style="display: flex; justify-content: center; align-items: center; min-height: 60vh;">
+		 <div id="contact-form" class="six columns tab-whole left" style="float: none; margin: 0 auto; max-width: 400px; width: 100%;">
+			<!-- form -->
+			<form name="registerForm" id="registerForm" method="post" action="/reg/addreg"  >
+				{% csrf_token %}
+				<fieldset>
+					<div class="group">
+						<input name="name" type="text" id="name" placeholder="Name" maxlength="150" required style="width:100%;padding:10px;margin-bottom:15px;" />
+					</div>
+					<div>
+						<input name="email" type="email" id="email" placeholder="Email" maxlength="150" required style="width:100%;padding:10px;margin-bottom:15px;" />
+					</div>
+					<div>
+						<input name="phone" type="text" id="phone" placeholder="Phone" maxlength="120" required style="width:100%;padding:10px;margin-bottom:15px;" />
+					</div>
+					<div>
+						<input name="passsword" type="password" id="passsword" placeholder="Password" maxlength="120" required style="width:100%;padding:10px;margin-bottom:15px;" />
+					</div>
+					<div>
+						<button class="submitform" style="width:100%;padding:10px 0;background:#222;color:#fff;border:none;border-radius:4px;font-size:1.1rem;">Register</button>
+						<div id="submit-loader" style="margin-top:10px;">
+							<div class="text-loader">Registering...</div>
+							<div class="s-loader">
+								<div class="bounce1"></div>
+								<div class="bounce2"></div>
+								<div class="bounce3"></div>
+							</div>
+						</div>
+					</div>
+				</fieldset>
+			</form> <!-- Form End -->
+		 </div>
+	  </div>
+
+            <!-- contact-warning -->
+            <div id="message-warning"></div>
+            <!-- contact-success -->
+      		<div id="message-success">
+               <i class="icon-ok"></i>Your message was sent, thank you!<br />
+      		</div>
+
+         </div>
+
+             	
+
+      </div> <!-- end row -->     
+
+   </section>  <!-- end contact -->
+ {% include 'footer.html' %}
+{% endblock %}
