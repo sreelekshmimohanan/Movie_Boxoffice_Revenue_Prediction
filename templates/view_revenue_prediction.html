@@ -1,0 +1,96 @@
+{% load static %}
+{% block content %}
+
+ {% include 'header.html' %}
+
+   <section id="contact" style="padding: 50px 0; background-color: #f9f9f9;">
+
+   	<div class="row section-head">
+
+   		<div class="twelve columns">
+
+	         <h1>View Revenue Predictions<span>.</span></h1>
+
+	         <hr />
+
+	      </div>
+
+      </div> <!-- end section-head -->
+
+	  <div class="row" style="display: flex; justify-content: center; align-items: center; min-height: 60vh;">
+		 <div class="twelve columns" style="max-width: 1400px; width: 100%; overflow-x: auto;">
+			<!-- table -->
+			<table style="width: 100%; border-collapse: collapse; margin-top: 20px; background-color: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden;">
+				<thead>
+					<tr style="background: linear-gradient(135deg, #222, #444); color: #fff;">
+						<th style="padding: 15px; border: 1px solid #ddd; font-weight: bold; text-align: center;">User</th>
+						<th style="padding: 15px; border: 1px solid #ddd; font-weight: bold; text-align: center;">Release Year</th>
+						<th style="padding: 15px; border: 1px solid #ddd; font-weight: bold; text-align: center;">Release Month</th>
+						<th style="padding: 15px; border: 1px solid #ddd; font-weight: bold; text-align: center;">Release Day</th>
+						<th style="padding: 15px; border: 1px solid #ddd; font-weight: bold; text-align: center;">Status</th>
+						<th style="padding: 15px; border: 1px solid #ddd; font-weight: bold; text-align: center;">Original Language</th>
+						<th style="padding: 15px; border: 1px solid #ddd; font-weight: bold; text-align: center;">Budget</th>
+						<th style="padding: 15px; border: 1px solid #ddd; font-weight: bold; text-align: center;">Popularity</th>
+						<th style="padding: 15px; border: 1px solid #ddd; font-weight: bold; text-align: center;">Genres Count</th>
+						<th style="padding: 15px; border: 1px solid #ddd; font-weight: bold; text-align: center;">Production Companies</th>
+						<th style="padding: 15px; border: 1px solid #ddd; font-weight: bold; text-align: center;">Production Countries</th>
+						<th style="padding: 15px; border: 1px solid #ddd; font-weight: bold; text-align: center;">Spoken Languages Count</th>
+						<th style="padding: 15px; border: 1px solid #ddd; font-weight: bold; text-align: center;">Cast Count</th>
+						<th style="padding: 15px; border: 1px solid #ddd; font-weight: bold; text-align: center;">Crew Count</th>
+						<th style="padding: 15px; border: 1px solid #ddd; font-weight: bold; text-align: center;">Runtime</th>
+						<th style="padding: 15px; border: 1px solid #ddd; font-weight: bold; text-align: center;">Predicted Revenue</th>
+						<th style="padding: 15px; border: 1px solid #ddd; font-weight: bold; text-align: center;">Created At</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for pred in predictions %}
+					<tr style="background-color: {% if forloop.counter|divisibleby:2 %}#f9f9f9{% else %}#fff{% endif %}; transition: background-color 0.3s;">
+						<td style="padding: 15px; border: 1px solid #ddd; text-align: center;">{{ pred.user.name }}</td>
+						<td style="padding: 15px; border: 1px solid #ddd; text-align: center;">{{ pred.release_year }}</td>
+						<td style="padding: 15px; border: 1px solid #ddd; text-align: center;">{{ pred.release_month }}</td>
+						<td style="padding: 15px; border: 1px solid #ddd; text-align: center;">{{ pred.release_day }}</td>
+						<td style="padding: 15px; border: 1px solid #ddd; text-align: center;">{{ pred.status }}</td>
+						<td style="padding: 15px; border: 1px solid #ddd; text-align: center;">{{ pred.original_language }}</td>
+						<td style="padding: 15px; border: 1px solid #ddd; text-align: center;">${{ pred.budget|floatformat:0 }}</td>
+						<td style="padding: 15px; border: 1px solid #ddd; text-align: center;">{{ pred.popularity }}</td>
+						<td style="padding: 15px; border: 1px solid #ddd; text-align: center;">{{ pred.genres_count }}</td>
+						<td style="padding: 15px; border: 1px solid #ddd; text-align: center;">{{ pred.production_companies }}</td>
+						<td style="padding: 15px; border: 1px solid #ddd; text-align: center;">{{ pred.production_countries }}</td>
+						<td style="padding: 15px; border: 1px solid #ddd; text-align: center;">{{ pred.spoken_languages_count }}</td>
+						<td style="padding: 15px; border: 1px solid #ddd; text-align: center;">{{ pred.cast_count }}</td>
+						<td style="padding: 15px; border: 1px solid #ddd; text-align: center;">{{ pred.crew_count }}</td>
+						<td style="padding: 15px; border: 1px solid #ddd; text-align: center;">{{ pred.runtime }}</td>
+						<td style="padding: 15px; border: 1px solid #ddd; text-align: center; font-weight: bold; color: #28a745;">${{ pred.predicted_revenue|floatformat:2 }}</td>
+						<td style="padding: 15px; border: 1px solid #ddd; text-align: center;">{{ pred.created_at|date:"M d, Y H:i" }}</td>
+					</tr>
+					{% empty %}
+					<tr>
+						<td colspan="17" style="padding: 20px; border: 1px solid #ddd; text-align: center; font-style: italic; color: #666;">No predictions found.</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			{% if predictions %}
+			<div style="text-align: center; margin-top: 20px; font-size: 14px; color: #666;">
+				Total Predictions: {{ predictions|length }}
+			</div>
+			{% endif %}
+		 </div>
+	  </div>
+
+            <!-- contact-warning -->
+            <div id="message-warning"></div>
+            <!-- contact-success -->
+      		<div id="message-success">
+               <i class="icon-ok"></i>Your predictions are listed!<br />
+      		</div>
+
+         </div>
+
+             	
+
+      </div> <!-- end row -->     
+
+   </section>  <!-- end contact -->
+ {% include 'footer.html' %}
+{% endblock %}

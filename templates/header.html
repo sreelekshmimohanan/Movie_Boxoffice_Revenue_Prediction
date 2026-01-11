@@ -50,12 +50,14 @@
             {% if request.session.logint %}
             <li><a href="{% url 'index' %}" style="color: #fff;">Home</a></li>
             <li><a href="{% url 'viewuser' %}" style="color: #fff;">ViewUser</a></li>
+            <li><a href="{% url 'view_revenue_prediction' %}" style="color: #fff;">View Revenue Prediction</a></li>
             <li><a href="{% url 'logout' %}" style="color: #fff;">Logout</a></li>
             {% elif request.session.uid %}
                         <li><a href="{% url 'index' %}" style="color: #fff;">Home</a></li>
 
-            <li><a href="#services" style="color: #fff;">Services</a></li>
-            <li><a href="#portfolio" style="color: #fff;">Portfolio</a></li>
+            <!-- <li><a href="#services" style="color: #fff;">Services</a></li>
+            <li><a href="#portfolio" style="color: #fff;">Portfolio</a></li> -->
+            <li><a href="{% url 'movie_revenue_prediction' %}" style="color: #fff;">Movie Revenue Prediction</a></li>
             <li><a href="{% url 'logout' %}" style="color: #fff;">Logout</a></li>
             {% else %}
                         <li><a href="{% url 'index' %}" style="color: #fff;">Home</a></li>
