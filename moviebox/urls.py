@@ -29,6 +29,8 @@ urlpatterns = [
     path('login/addlogin',views.addlogin, name='addlogin'),
     path('logout/',views.logout, name='logout'),
     path('viewuser/',views.viewuser, name='viewuser'),
+    path('movie_revenue_prediction/', views.movie_revenue_prediction, name='movie_revenue_prediction'),
+    path('view_revenue_prediction/', views.view_revenue_prediction, name='view_revenue_prediction'),
 
     path('admin/', admin.site.urls),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
